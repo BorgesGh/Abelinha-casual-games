@@ -1,4 +1,5 @@
 
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:primeiro_jogo/Jogo.dart';
 
@@ -8,9 +9,11 @@ class Polen extends SpriteAnimationComponent with HasGameRef<Jogo>{
   Polen({super.position}) : super (
 
     //Definindo o tamanho do spirte
-    size: Vector2(80, 80),
+    size: Vector2(tamanho, tamanho),
     anchor: Anchor.centerLeft
   );
+
+  static const tamanho = 80.0;
 
   @override
   Future<void> onLoad() async{
@@ -26,6 +29,12 @@ class Polen extends SpriteAnimationComponent with HasGameRef<Jogo>{
       )
     );
 
+    //A colisão da bala tem que ser passiva para ela apenas colidir com algo ativo.
+    add(RectangleHitbox(
+      size: Vector2.all(tamanho),
+      collisionType: CollisionType.passive
+    ));
+
   }
 
   @override
@@ -39,5 +48,7 @@ class Polen extends SpriteAnimationComponent with HasGameRef<Jogo>{
       removeFromParent();
     }
   }
+
+
 
 }

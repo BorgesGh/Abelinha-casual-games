@@ -28,7 +28,7 @@ class Player extends SpriteComponent with HasGameRef<Jogo>{
 
     // declarando Como o Spawner de polen irá funcionar
     _polenSpawner = SpawnComponent(
-      period: .2,
+      period: 1,
       selfPositioning: true,
       factory: (index) {
         return Polen(

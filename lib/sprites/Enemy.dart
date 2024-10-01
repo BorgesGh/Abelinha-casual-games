@@ -1,9 +1,11 @@
 
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:primeiro_jogo/sprites/Polen.dart';
 
 import '../Jogo.dart';
 
-class Enemy extends SpriteAnimationComponent with HasGameRef<Jogo>{
+class Enemy extends SpriteAnimationComponent with HasGameRef<Jogo>, CollisionCallbacks{
 
   Enemy({super.position}) : super(
     size: Vector2.all(tamanho),
@@ -25,6 +27,10 @@ class Enemy extends SpriteAnimationComponent with HasGameRef<Jogo>{
             textureSize: Vector2(32, 32) // Tamanho de cada frame
         )
     );
+
+    //A colisão do inimgo tem que ser ativa, pois ele tem que verificar se tomou tiro. E há menor inimigos do que balas na tela. Aumentando o desempenho
+    add(RectangleHitbox(size: Vector2(tamanho, tamanho)));
+
   }
 
   @override
@@ -38,4 +44,16 @@ class Enemy extends SpriteAnimationComponent with HasGameRef<Jogo>{
     }
   }
 
+  @override
+  void onCollisionStart(
+      Set<Vector2> intersectionPoints, PositionComponent other)
+  {
+    super.onCollisionStart(intersectionPoints, other);
+
+    if(other is Polen){
+      removeFromParent();
+      other.removeFromParent();
+
+    }
+  }
 }

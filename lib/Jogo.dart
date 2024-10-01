@@ -11,7 +11,7 @@ import 'Assets.dart';
 
 
 
-class Jogo extends FlameGame with PanDetector{
+class Jogo extends FlameGame with PanDetector, HasCollisionDetection{
 
   late Player jogador;
 
