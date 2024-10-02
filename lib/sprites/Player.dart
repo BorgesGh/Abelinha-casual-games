@@ -35,7 +35,6 @@ class Player extends SpriteComponent with HasGameRef<Jogo>{
           position: position + Vector2(20, 0)
 
         );
-
       },
       autoStart: false
     );
@@ -57,6 +56,4 @@ class Player extends SpriteComponent with HasGameRef<Jogo>{
   void stopPolen(){
     _polenSpawner.timer.stop();
   }
-
-
 }

@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+import 'package:flame/game.dart';
+import 'package:primeiro_jogo/jogo.dart'; // Certifique-se de ajustar o caminho
+
+class MainMenuScreen extends StatelessWidget {
+  final VoidCallback onStartGame;
+
+  const MainMenuScreen({super.key, required this.onStartGame});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.yellowAccent,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Abelha guerreira',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 32,
+              ),
+            ),
+            const SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: onStartGame,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              ),
+              child: const Text(
+                'Iniciar Jogo',
+                style: TextStyle(fontSize: 24),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
