@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   flame: ^1.19.0
+  flame_audio: ^2.10.3
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -62,6 +63,7 @@ flutter:
   assets:
     - assets/images/background-florido.png
     - assets/images/
+    - assets/audio/MainTitle.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -6,10 +6,9 @@ import 'package:flame/parallax.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:primeiro_jogo/sprites/Enemy.dart';
 import 'package:primeiro_jogo/sprites/Player.dart';
+import 'package:flame_audio/flame_audio.dart';
 
 import 'Assets.dart';
-
-
 
 class Jogo extends FlameGame with PanDetector, HasCollisionDetection{
 
@@ -19,14 +18,20 @@ class Jogo extends FlameGame with PanDetector, HasCollisionDetection{
   @override
   Future<void> onLoad() async{
 
+    //Crregamento. tempo
+
+    FlameAudio.play("MainTitle.mp3");
+
+    await Future.delayed(const Duration(seconds: 2));
+
     //Carregar tudo que há no jogo
     final background = await loadParallaxComponent(
-
         [
           ParallaxImageData(Assets.background),
         ],
-      baseVelocity: Vector2(5, 0),
+      baseVelocity: Vector2(2, 0),
       repeat: ImageRepeat.repeatX,
+
       velocityMultiplierDelta: Vector2(6, 0),
       size: Vector2(1200, 1000)
     );
@@ -36,6 +41,7 @@ class Jogo extends FlameGame with PanDetector, HasCollisionDetection{
     jogador = Player();
 
     add(jogador);
+
 
     add(SpawnComponent(
       factory: (index){
