@@ -14,7 +14,7 @@ class Polen extends SpriteAnimationComponent with HasGameRef<Jogo>{
     anchor: Anchor.centerLeft
   );
 
-  static const tamanho = 70.0; // O Compilador está entendendo que o tamanho do jogo é esse... por isso o tiro some.
+  static const tamanho = 80.0; // O Compilador está entendendo que o tamanho do jogo é esse... por isso o tiro some.
 
   @override
   Future<void> onLoad() async{
