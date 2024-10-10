@@ -1,6 +1,7 @@
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:primeiro_jogo/Jogo.dart';
 
 //Note que o Polen está herndando de SpriteAnimation
@@ -13,7 +14,7 @@ class Polen extends SpriteAnimationComponent with HasGameRef<Jogo>{
     anchor: Anchor.centerLeft
   );
 
-  static const tamanho = 80.0;
+  static const tamanho = 70.0; // O Compilador está entendendo que o tamanho do jogo é esse... por isso o tiro some.
 
   @override
   Future<void> onLoad() async{
@@ -31,8 +32,10 @@ class Polen extends SpriteAnimationComponent with HasGameRef<Jogo>{
 
     //A colisão da bala tem que ser passiva para ela apenas colidir com algo ativo.
     add(RectangleHitbox(
-      size: Vector2.all(tamanho),
-      collisionType: CollisionType.passive
+      size: Vector2.all(tamanho - 40),
+      collisionType: CollisionType.passive,
+      anchor: Anchor.center,
+      position: Vector2(width / 2,  height / 2)
     ));
 
   }
@@ -44,7 +47,8 @@ class Polen extends SpriteAnimationComponent with HasGameRef<Jogo>{
     //O Tiro sair da tela
     position.x += dt * 100;
 
-    if(position.x < -width){
+    // print("O tamanho da tela: $width a posição do polen ${position.x}");
+    if(position.x > gameRef.size.x){
       removeFromParent();
     }
   }

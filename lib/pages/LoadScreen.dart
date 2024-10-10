@@ -1,8 +1,10 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoadingScreen extends StatelessWidget {
+
+  LoadingScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -11,16 +13,8 @@ class LoadingScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircularProgressIndicator(
-              color: Colors.black,
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Carregando...',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 24,
-              ),
+            Center(
+              child: CircularProgressIndicator(),
             ),
           ],
         ),

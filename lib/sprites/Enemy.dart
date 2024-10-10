@@ -1,9 +1,11 @@
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:primeiro_jogo/sprites/Polen.dart';
 
 import '../Jogo.dart';
+import 'Player.dart';
 
 class Enemy extends SpriteAnimationComponent with HasGameRef<Jogo>, CollisionCallbacks{
 
@@ -40,6 +42,7 @@ class Enemy extends SpriteAnimationComponent with HasGameRef<Jogo>, CollisionCal
     position.x += dt * -100;
 
     if(position.x < 0){
+      print("Inimigo morreu!");
       removeFromParent();
     }
   }
@@ -53,6 +56,14 @@ class Enemy extends SpriteAnimationComponent with HasGameRef<Jogo>, CollisionCal
     if(other is Polen){
       removeFromParent();
       other.removeFromParent();
+      game.pontuacao.value++;
+    }
+
+    else if(other is Player){
+      FlameAudio.bgm.stop();
+      FlameAudio.bgm.play("derrotaMusic.mp3");
+
+      game.gameOver();
 
     }
   }

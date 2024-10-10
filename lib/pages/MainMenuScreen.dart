@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flame/game.dart';
-import 'package:primeiro_jogo/jogo.dart'; // Certifique-se de ajustar o caminho
 
 class MainMenuScreen extends StatelessWidget {
   final VoidCallback onStartGame;

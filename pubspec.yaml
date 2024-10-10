@@ -64,6 +64,7 @@ flutter:
     - assets/images/background-florido.png
     - assets/images/
     - assets/audio/MainTitle.mp3
+    - assets/audio/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

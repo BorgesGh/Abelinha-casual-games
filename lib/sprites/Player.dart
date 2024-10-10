@@ -1,5 +1,6 @@
 
 import 'dart:ui';
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import 'package:primeiro_jogo/Assets.dart';
@@ -9,9 +10,11 @@ import '../Jogo.dart';
 
 class Player extends SpriteComponent with HasGameRef<Jogo>{
 
+  static const double tamanho = 90.0;
+
   Player() : super(
-    size: Vector2(90, 90),
-    anchor: Anchor.centerLeft
+    size: Vector2(tamanho,tamanho),
+    anchor: Anchor.center
   );
 
   //Criador de polens
@@ -41,6 +44,21 @@ class Player extends SpriteComponent with HasGameRef<Jogo>{
 
     game.add(_polenSpawner);
 
+    add(RectangleHitbox(
+      size: Vector2(tamanho - 25,tamanho - 30), // O tamanho da Hitbox tem que ser menor
+      collisionType: CollisionType.passive, // O Tipo passivo indica que o objeto pode ser tocado por outro objeto.
+
+      position: Vector2(width / 2 , height /2), // Centraliza o ponto de referência
+      anchor: Anchor.center // Indica qual é o ponto de referência da HitBox, nesse caso o ponto de alinhamento é o centro.
+
+    )
+    );
+
+  }
+
+  void
+  reset(){
+    position = gameRef.size / 2;
   }
 
   void move(Vector2 pos){
