@@ -1,16 +1,7 @@
-# primeiro_jogo
+# Primeiro jogo construído com Flame Game
+<p>O jogo da Abelinha é um projeto com o objetivo de aprender as principais funcionalidades ofertadas pelo Flame.</p>
+<p>O Jogo consiste em acertar os monstros com o polen disparado pela Abelha e conseguir pontos. É um jogo Endless, ou seja não há fim!</p>
+<p>Está bem simples e ganhará atualizações, como animações e estilizações. Segue uma imagem do jogo</p>
 
-A new Flutter project.
+<img src="imagens/foto.png">
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
