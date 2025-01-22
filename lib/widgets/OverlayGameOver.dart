@@ -19,6 +19,7 @@ class OverlayScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     return Container(
       alignment: const Alignment(0, -0.15),
+
       child: Container(
         width: 400,
         height: 500,
@@ -26,9 +27,12 @@ class OverlayScreen extends StatelessWidget{
         decoration: const BoxDecoration(
           color: Colors.yellow,
           borderRadius: BorderRadius.all(Radius.circular(35.5))
+
         ),
+
         child: Column(
           mainAxisSize: MainAxisSize.min,
+
           children: [
             Text(
               title,
@@ -36,13 +40,14 @@ class OverlayScreen extends StatelessWidget{
                 fontSize: 40,
                 color: Colors.black,
                 decoration: TextDecoration.none
-              )
 
+              )
             ),
             const SizedBox(height: 16),
             Text(
               subtitle,
               style: Theme.of(context).textTheme.headlineSmall,
+
             ),
             ElevatedButton(
               onPressed: (){
