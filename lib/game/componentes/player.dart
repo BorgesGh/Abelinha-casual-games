@@ -2,10 +2,9 @@ import 'dart:ui';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
+import 'package:primeiro_jogo/game/componentes/polen.dart';
+import 'package:primeiro_jogo/game/jogo.dart';
 import 'package:primeiro_jogo/utils/Constants.dart';
-import 'package:primeiro_jogo/componentes/Polen.dart';
-
-import '../Jogo.dart';
 
 class Player extends SpriteComponent with HasGameRef<Jogo> {
   static const double tamanhodoPlayer = 90.0;

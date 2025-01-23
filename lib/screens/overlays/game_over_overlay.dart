@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../Jogo.dart';
+import 'package:primeiro_jogo/game/jogo.dart';
 
 class GameOverOverlay extends StatelessWidget {
   const GameOverOverlay(

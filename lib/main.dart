@@ -1,6 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:primeiro_jogo/Jogo.dart';
+import 'package:primeiro_jogo/game/jogo.dart';
 import 'package:primeiro_jogo/screens/pages/main_menu_screen.dart';
 import 'package:primeiro_jogo/screens/overlays/game_over_overlay.dart';
 

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flame/components.dart';
 import 'package:flame/parallax.dart';
 import 'package:flutter/material.dart';
-import 'package:primeiro_jogo/Jogo.dart';
+import 'package:primeiro_jogo/game/jogo.dart';
 
 class BackgroundParallax extends ParallaxComponent<Jogo> with HasGameRef<Jogo> {
   BackgroundParallax()

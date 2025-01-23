@@ -2,10 +2,9 @@ import 'dart:async';
 
 import 'package:flame/components.dart';
 import 'package:flame/experimental.dart';
-import 'package:primeiro_jogo/Jogo.dart';
-import 'package:primeiro_jogo/componentes/Enemy.dart';
-import 'package:primeiro_jogo/componentes/Player.dart';
-import 'package:primeiro_jogo/componentes/world/background_parallax.dart';
+import 'package:primeiro_jogo/game/componentes/Enemy.dart';
+import 'package:primeiro_jogo/game/componentes/world/background_parallax.dart';
+import 'package:primeiro_jogo/game/jogo.dart';
 
 class MeuMundo extends World with HasGameRef<Jogo>, HasCollisionDetection {
   late final background;
@@ -42,8 +41,8 @@ class MeuMundo extends World with HasGameRef<Jogo>, HasCollisionDetection {
         return Enemy();
       },
       period: 1,
-      area:
-          Rectangle.fromLTWH((width / 2) + 50, -(height / 2), 20, height - 70),
+      area: Rectangle.fromLTWH(
+          (width / 2) + 50, -(height / 2), 20, height - height / 4),
       autoStart: false,
     );
 

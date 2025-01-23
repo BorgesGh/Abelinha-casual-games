@@ -1,10 +1,9 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_audio/flame_audio.dart';
-import 'package:primeiro_jogo/componentes/Polen.dart';
-
-import '../Jogo.dart';
-import 'Player.dart';
+import 'package:primeiro_jogo/game/componentes/Player.dart';
+import 'package:primeiro_jogo/game/componentes/polen.dart';
+import 'package:primeiro_jogo/game/jogo.dart';
 
 class Enemy extends SpriteAnimationComponent
     with HasGameRef<Jogo>, CollisionCallbacks {
@@ -28,7 +27,10 @@ class Enemy extends SpriteAnimationComponent
             ));
 
     //A colisão do inimgo tem que ser ativa, pois ele tem que verificar se tomou tiro. E há menor inimigos do que balas na tela. Aumentando o desempenho
-    add(RectangleHitbox(size: Vector2(tamanho, tamanho)));
+    add(RectangleHitbox(
+        size: Vector2(tamanho, tamanho),
+        position: Vector2(tamanho / 2, tamanho / 2),
+        anchor: Anchor.center));
   }
 
   @override
@@ -38,7 +40,6 @@ class Enemy extends SpriteAnimationComponent
     position.x += dt * -100;
 
     if (position.x < -(gameRef.size.x / 2)) {
-      print("Inimigo morreu!");
       removeFromParent();
     }
   }
@@ -53,6 +54,7 @@ class Enemy extends SpriteAnimationComponent
       other.removeFromParent();
       game.pontuacao.value++;
     } else if (other is Player) {
+      print("Game Over");
       FlameAudio.bgm.stop();
       FlameAudio.bgm.play("derrotaMusic.mp3");
       game.gameOver();

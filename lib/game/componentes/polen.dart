@@ -1,7 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:primeiro_jogo/Jogo.dart';
+import 'package:primeiro_jogo/game/jogo.dart';
 
 //Note que o Polen está herndando de SpriteAnimation
 class Polen extends SpriteAnimationComponent with HasGameRef<Jogo> {
