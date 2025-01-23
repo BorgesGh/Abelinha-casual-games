@@ -1,7 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_audio/flame_audio.dart';
-import 'package:primeiro_jogo/sprites/Polen.dart';
+import 'package:primeiro_jogo/componentes/Polen.dart';
 
 import '../Jogo.dart';
 import 'Player.dart';

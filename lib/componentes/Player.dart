@@ -2,8 +2,8 @@ import 'dart:ui';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
-import 'package:primeiro_jogo/Constants.dart';
-import 'package:primeiro_jogo/sprites/Polen.dart';
+import 'package:primeiro_jogo/utils/Constants.dart';
+import 'package:primeiro_jogo/componentes/Polen.dart';
 
 import '../Jogo.dart';
 

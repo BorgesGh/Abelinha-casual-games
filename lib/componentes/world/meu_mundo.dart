@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:flame/components.dart';
 import 'package:flame/experimental.dart';
 import 'package:primeiro_jogo/Jogo.dart';
-import 'package:primeiro_jogo/sprites/Enemy.dart';
-import 'package:primeiro_jogo/sprites/Player.dart';
+import 'package:primeiro_jogo/componentes/Enemy.dart';
+import 'package:primeiro_jogo/componentes/Player.dart';
+import 'package:primeiro_jogo/componentes/world/background_parallax.dart';
 
 class MeuMundo extends World with HasGameRef<Jogo>, HasCollisionDetection {
   late final background;
@@ -31,21 +32,9 @@ class MeuMundo extends World with HasGameRef<Jogo>, HasCollisionDetection {
 
     add(pontuacaoText);
 
-    // Carregar tudo que há no jogo
-    // background = Parallax(
-    //   [
-    //     ParallaxLayer(
-    //       ParallaxRenderer()
-    //       Constants.background
-    //       ),
-    //   ],
-    //   baseVelocity: Vector2(2, 0),
-    //   repeat: ImageRepeat.repeatX,
-    //   velocityMultiplierDelta: Vector2(6, 0),
-    //   size: Vector2(1200, 1000),
-    // );
+    background = BackgroundParallax();
 
-    // add(background);
+    add(background);
 
     _spawnComponent = SpawnComponent(
       // Spawn dos inimigos na direita da tela
@@ -53,7 +42,8 @@ class MeuMundo extends World with HasGameRef<Jogo>, HasCollisionDetection {
         return Enemy();
       },
       period: 1,
-      area: Rectangle.fromLTWH(width / 2, -(height / 2), 20, height - 70),
+      area:
+          Rectangle.fromLTWH((width / 2) + 50, -(height / 2), 20, height - 70),
       autoStart: false,
     );
 
@@ -62,7 +52,6 @@ class MeuMundo extends World with HasGameRef<Jogo>, HasCollisionDetection {
   }
 
   void startSpawnInimigos() {
-    print('Inimigos começaram a aparecer');
     _spawnComponent.timer.start();
   }
 

@@ -4,13 +4,13 @@ import 'package:flame/experimental.dart';
 import 'package:flame/game.dart';
 import 'package:flame/parallax.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:primeiro_jogo/meu_mundo.dart';
-import 'package:primeiro_jogo/sprites/Enemy.dart';
-import 'package:primeiro_jogo/sprites/Player.dart';
+import 'package:primeiro_jogo/componentes/world/meu_mundo.dart';
+import 'package:primeiro_jogo/componentes/Enemy.dart';
+import 'package:primeiro_jogo/componentes/Player.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 
-import 'Constants.dart';
+import 'utils/Constants.dart';
 
 enum GameState { intro, playing, gameOver }
 
@@ -46,7 +46,7 @@ class Jogo extends FlameGame with PanDetector {
   void gameOver() {
     state = GameState.gameOver;
     FlameAudio.bgm.stop(); // Parar música
-    // FlameAudio.play('derrotaMusic.mp3'); // Tocar som de Game Over
+    FlameAudio.play('derrotaMusic.mp3'); // Tocar som de Game Over
 
     (world as MeuMundo).stopSpawnInimigos();
     jogador.gameOver();
