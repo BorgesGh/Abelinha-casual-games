@@ -13,7 +13,7 @@ class BackgroundParallax extends ParallaxComponent<Jogo> with HasGameRef<Jogo> {
   FutureOr<void> onLoad() async {
     parallax = await gameRef.loadParallax(
       [
-        ParallaxImageData('background-florido.png'),
+        ParallaxImageData('bg.png'),
       ],
       repeat: ImageRepeat.repeat,
       baseVelocity: Vector2(50, 0),
