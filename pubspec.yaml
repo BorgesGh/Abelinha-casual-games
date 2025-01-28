@@ -68,11 +68,10 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/background-florido.png
     - assets/images/
     - assets/audio/MainTitle.mp3
     - assets/audio/
-    - assets/images/explosion/
+    - assets/images/explosion.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -2,6 +2,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:primeiro_jogo/game/componentes/Player.dart';
+import 'package:primeiro_jogo/game/componentes/explosao.dart';
 import 'package:primeiro_jogo/game/componentes/polen.dart';
 import 'package:primeiro_jogo/game/jogo.dart';
 
@@ -50,6 +51,8 @@ class Enemy extends SpriteAnimationComponent
     super.onCollisionStart(intersectionPoints, other);
 
     if (other is Polen) {
+      game.world.add(ExplosionComponent(
+          (position.x - size.x / 2) - 30, position.y - size.y / 2));
       removeFromParent();
       other.removeFromParent();
       game.pontuacao.value++;
