@@ -1,4 +1,5 @@
 import 'package:flame/game.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:primeiro_jogo/game/jogo.dart';
 import 'package:primeiro_jogo/screens/pages/main_menu_screen.dart';
@@ -7,10 +8,18 @@ import 'package:primeiro_jogo/screens/overlays/game_over_overlay.dart';
 import 'screens/pages/loading_page.dart';
 
 void main() {
-  runApp(MyGameApp());
+  WidgetsFlutterBinding
+      .ensureInitialized(); // Garante que o Flutter esteja inicializado antes de executar o código
+  FlameAudio.audioCache.loadAll([
+    'MainTitle.mp3',
+    'derrotaMusic.mp3',
+  ]);
+  runApp(const MyGameApp());
 }
 
 class MyGameApp extends StatefulWidget {
+  const MyGameApp({super.key});
+
   @override
   _MyGameAppState createState() => _MyGameAppState();
 }
@@ -23,6 +32,7 @@ class _MyGameAppState extends State<MyGameApp> {
   @override
   void initState() {
     super.initState();
+    jogo = Jogo();
   } // Controla se o jogo começou
 
   void startGame() {
@@ -35,10 +45,12 @@ class _MyGameAppState extends State<MyGameApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.yellow,
+      ),
       home: isGameStarted
           ? GameWidget(
-              game: jogo =
-                  Jogo(larguraDaTela: MediaQuery.of(context).size.width),
+              game: jogo,
               loadingBuilder: (context) => LoadingPage(),
               overlayBuilderMap: {
                 GameState.gameOver.name: (context, game) => GameOverOverlay(

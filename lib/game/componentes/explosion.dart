@@ -1,9 +1,9 @@
 import 'package:flame/components.dart';
 import 'package:primeiro_jogo/game/jogo.dart';
 
-class ExplosionComponent extends SpriteAnimationComponent
+class ExplosionEffect extends SpriteAnimationComponent
     with HasGameReference<Jogo> {
-  ExplosionComponent(double x, double y)
+  ExplosionEffect(double x, double y)
       : super(
           position: Vector2(x, y),
           size: Vector2.all(50),

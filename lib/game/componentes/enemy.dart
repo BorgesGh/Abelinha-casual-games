@@ -2,35 +2,34 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:primeiro_jogo/game/componentes/Player.dart';
-import 'package:primeiro_jogo/game/componentes/explosao.dart';
+import 'package:primeiro_jogo/game/componentes/explosion.dart';
 import 'package:primeiro_jogo/game/componentes/polen.dart';
 import 'package:primeiro_jogo/game/jogo.dart';
 
 class Enemy extends SpriteAnimationComponent
     with HasGameRef<Jogo>, CollisionCallbacks {
+  static const enemySize = 80.0;
   Enemy({super.position})
-      : super(size: Vector2.all(tamanho), anchor: Anchor.centerRight);
-
-  static const tamanho = 80.0;
+      : super(size: Vector2.all(enemySize), anchor: Anchor.centerRight);
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
 
-    //Aqui é a animação do polen saindo da abelha.
+    //Animação do inimigo, no caso 3 sprites para o mesmo inimigo
     animation = await game.loadSpriteAnimation(
         "enemy.png",
         SpriteAnimationData.sequenced(
             // É possível gerar uma animação por meio de uma foto, apenas dizendo quantos frames são correspondentes
             amount: 3,
             stepTime: 1, // Tempo que vai durar cada frame
-            textureSize: Vector2(32, 32) // Tamanho de cada frame
+            textureSize: Vector2(32, 32) // tamanho de cada frame
             ));
 
-    //A colisão do inimgo tem que ser ativa, pois ele tem que verificar se tomou tiro. E há menor inimigos do que balas na tela. Aumentando o desempenho
+    //A colisão do inimgo tem que ser ativa, pois ele tem que verificar se foi atingido. E há menor inimigos do que polens na tela. Aumentando o desempenho
     add(RectangleHitbox(
-        size: Vector2(tamanho, tamanho),
-        position: Vector2(tamanho / 2, tamanho / 2),
+        size: Vector2.all(enemySize), // O tamanho da Hitbox tem que ser menor
+        position: Vector2(enemySize / 2, enemySize / 2),
         anchor: Anchor.center));
   }
 
@@ -50,16 +49,17 @@ class Enemy extends SpriteAnimationComponent
       Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollisionStart(intersectionPoints, other);
 
+    if (game.state == GameState.gameOver) {
+      return;
+    }
+    // Verifica se o objeto colidido é um polen ou com o jogador
     if (other is Polen) {
-      game.world.add(ExplosionComponent(
+      game.world.add(ExplosionEffect(
           (position.x - size.x / 2) - 30, position.y - size.y / 2));
       removeFromParent();
       other.removeFromParent();
       game.pontuacao.value++;
     } else if (other is Player) {
-      print("Game Over");
-      FlameAudio.bgm.stop();
-      FlameAudio.bgm.play("derrotaMusic.mp3");
       game.gameOver();
     }
   }

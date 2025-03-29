@@ -9,7 +9,7 @@ import 'package:primeiro_jogo/game/jogo.dart';
 class MeuMundo extends World with HasGameRef<Jogo>, HasCollisionDetection {
   late final background;
   late TextComponent pontuacaoText;
-  late SpawnComponent _spawnComponent;
+  late SpawnComponent _spawnEnemies;
 
   double width = 0;
   double height = 0;
@@ -23,7 +23,7 @@ class MeuMundo extends World with HasGameRef<Jogo>, HasCollisionDetection {
 
     // Exibir pontuação no canto superior esquerdo
     pontuacaoText = TextComponent(
-        position: Vector2((-width / 2) + 40, (-height / 2) + 60),
+        position: Vector2((-width / 2) + 80, (-height / 2) + 100),
         text: gameRef.pontuacao.toString(),
         anchor: Anchor.center,
         priority: 10,
@@ -35,7 +35,7 @@ class MeuMundo extends World with HasGameRef<Jogo>, HasCollisionDetection {
 
     add(background);
 
-    _spawnComponent = SpawnComponent(
+    _spawnEnemies = SpawnComponent(
       // Spawn dos inimigos na direita da tela
       factory: (index) {
         return Enemy();
@@ -46,16 +46,32 @@ class MeuMundo extends World with HasGameRef<Jogo>, HasCollisionDetection {
       autoStart: false,
     );
 
-    add(_spawnComponent);
+    add(_spawnEnemies);
     return super.onLoad();
   }
 
+  @override
+  void onGameResize(Vector2 size) {
+    // Atualiza a posição do texto de pontuação quando o tamanho do jogo muda
+    pontuacaoText.position = Vector2((-size.x / 2) + 80, (-size.y / 2) + 100);
+    pontuacaoText.scale = Vector2(4, 4);
+
+    height = size.y;
+    width = size.x;
+
+    // Atualiza a área de spawn dos inimigos quando o tamanho do jogo muda
+    _spawnEnemies.area = Rectangle.fromLTWH(
+        (size.x / 2) + 50, -(size.y / 2), 20, size.y - size.y / 4);
+
+    super.onGameResize(size);
+  }
+
   void startSpawnInimigos() {
-    _spawnComponent.timer.start();
+    _spawnEnemies.timer.start();
   }
 
   void stopSpawnInimigos() {
-    _spawnComponent.timer.stop();
+    _spawnEnemies.timer.stop();
   }
 
   void reset() async {
