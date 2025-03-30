@@ -1,18 +1,27 @@
 import 'package:flame/game.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
-import 'package:primeiro_jogo/Jogo.dart';
-import 'package:primeiro_jogo/pages/MainMenuScreen.dart';
-import 'package:primeiro_jogo/widgets/OverlayScreen.dart';
+import 'package:primeiro_jogo/game/jogo.dart';
+import 'package:primeiro_jogo/screens/pages/main_menu_screen.dart';
+import 'package:primeiro_jogo/screens/overlays/game_over_overlay.dart';
+import 'package:primeiro_jogo/utils/assets.dart';
 
-import 'pages/LoadScreen.dart';
+import 'screens/pages/loading_page.dart';
 
 void main() {
-  runApp(
-    MyGameApp()
-  );
+  WidgetsFlutterBinding
+      .ensureInitialized(); // Garante que o Flutter esteja inicializado antes de executar o código
+
+  FlameAudio.audioCache.loadAll([
+    Assets.musicPlay,
+    Assets.musicDefeat,
+  ]);
+  runApp(const MyGameApp());
 }
 
 class MyGameApp extends StatefulWidget {
+  const MyGameApp({super.key});
+
   @override
   _MyGameAppState createState() => _MyGameAppState();
 }
@@ -20,13 +29,13 @@ class MyGameApp extends StatefulWidget {
 class _MyGameAppState extends State<MyGameApp> {
   bool isGameStarted = false;
 
-  late final Jogo gamely;
+  late final Jogo jogo;
 
   @override
   void initState() {
-    gamely = Jogo(context: context);
+    super.initState();
+    jogo = Jogo();
   } // Controla se o jogo começou
-
 
   void startGame() {
     setState(() {
@@ -38,21 +47,23 @@ class _MyGameAppState extends State<MyGameApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.yellow,
+      ),
       home: isGameStarted
           ? GameWidget(
-            game: gamely,
-            loadingBuilder: (context) => LoadingScreen(),
-            overlayBuilderMap: {
-              GameState.gameOver.name: (context, game) =>
-                OverlayScreen(
-                  game: gamely,
-                  title: " FIM DE JOGO! " ,
-                  subtitle: "Sua pontuação foi de: ${gamely.pontuacao.value}",
-                )
-            },
-          )  // Se o jogo começou, exibe o GameWidget
-          : MainMenuScreen(onStartGame: startGame),  // Caso contrário, exibe o menu principal
+              game: jogo,
+              loadingBuilder: (context) => const LoadingPage(),
+              overlayBuilderMap: {
+                GameState.gameOver.name: (context, game) => GameOverOverlay(
+                      game: jogo,
+                      title: " FIM DE JOGO! ",
+                      subtitle: "Sua pontuação foi de: ${jogo.pontuacao.value}",
+                    )
+              },
+            ) // Se o jogo começou, exibe o GameWidget
+          : MainMenuPage(
+              onStartGame: startGame), // Caso contrário, exibe o menu principal
     );
   }
 }
-

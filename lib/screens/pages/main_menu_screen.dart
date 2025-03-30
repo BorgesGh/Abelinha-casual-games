@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class MainMenuScreen extends StatelessWidget {
+class MainMenuPage extends StatelessWidget {
   final VoidCallback onStartGame;
 
-  const MainMenuScreen({super.key, required this.onStartGame});
+  const MainMenuPage({super.key, required this.onStartGame});
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +24,11 @@ class MainMenuScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: onStartGame,
               style: ElevatedButton.styleFrom(
+                shape: const LinearBorder(),
                 backgroundColor: Colors.blue,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                foregroundColor: Colors.white,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               ),
               child: const Text(
                 'Iniciar Jogo',
