@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:primeiro_jogo/game/jogo.dart';
 import 'package:primeiro_jogo/screens/pages/main_menu_screen.dart';
 import 'package:primeiro_jogo/screens/overlays/game_over_overlay.dart';
+import 'package:primeiro_jogo/utils/assets.dart';
 
 import 'screens/pages/loading_page.dart';
 
@@ -11,8 +12,8 @@ void main() {
   WidgetsFlutterBinding
       .ensureInitialized(); // Garante que o Flutter esteja inicializado antes de executar o código
   FlameAudio.audioCache.loadAll([
-    'MainTitle.mp3',
-    'derrotaMusic.mp3',
+    Assets.musicPlay,
+    Assets.musicDefeat,
   ]);
   runApp(const MyGameApp());
 }

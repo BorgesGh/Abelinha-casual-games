@@ -5,6 +5,7 @@ import 'package:primeiro_jogo/game/componentes/Player.dart';
 import 'package:primeiro_jogo/game/componentes/explosion.dart';
 import 'package:primeiro_jogo/game/componentes/polen.dart';
 import 'package:primeiro_jogo/game/jogo.dart';
+import 'package:primeiro_jogo/utils/assets.dart';
 
 class Enemy extends SpriteAnimationComponent
     with HasGameRef<Jogo>, CollisionCallbacks {
@@ -18,7 +19,7 @@ class Enemy extends SpriteAnimationComponent
 
     //Animação do inimigo, no caso 3 sprites para o mesmo inimigo
     animation = await game.loadSpriteAnimation(
-        "enemy.png",
+        Assets.enemy,
         SpriteAnimationData.sequenced(
             // É possível gerar uma animação por meio de uma foto, apenas dizendo quantos frames são correspondentes
             amount: 3,

@@ -6,6 +6,7 @@ import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:primeiro_jogo/game/componentes/Player.dart';
 import 'package:primeiro_jogo/game/componentes/world/meu_mundo.dart';
+import 'package:primeiro_jogo/utils/assets.dart';
 
 enum GameState { intro, playing, gameOver }
 
@@ -29,7 +30,7 @@ class Jogo extends FlameGame<MeuMundo> with PanDetector {
     pontuacao.value = 0;
     world.add(jogador = Player());
 
-    FlameAudio.bgm.play("MainTitle.mp3");
+    FlameAudio.bgm.play(Assets.musicPlay); // Tocar música de introdução
     await Future.delayed(const Duration(seconds: 1));
   }
 
@@ -43,7 +44,7 @@ class Jogo extends FlameGame<MeuMundo> with PanDetector {
     state = GameState.gameOver;
 
     FlameAudio.bgm.stop(); // Parar música
-    FlameAudio.bgm.play('derrotaMusic.mp3'); // Tocar som de Game Over
+    FlameAudio.bgm.play(Assets.musicDefeat); // Tocar som de Game Over
 
     world.stopSpawnInimigos();
     jogador.gameOver();
@@ -56,7 +57,7 @@ class Jogo extends FlameGame<MeuMundo> with PanDetector {
     state = GameState.playing;
 
     FlameAudio.bgm.stop(); // Parar música de game over
-    FlameAudio.bgm.play("MainTitle.mp3");
+    FlameAudio.bgm.play(Assets.musicPlay);
 
     world.reset();
     pontuacao.value = 0;

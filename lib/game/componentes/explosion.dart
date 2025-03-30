@@ -1,5 +1,6 @@
 import 'package:flame/components.dart';
 import 'package:primeiro_jogo/game/jogo.dart';
+import 'package:primeiro_jogo/utils/assets.dart';
 
 class ExplosionEffect extends SpriteAnimationComponent
     with HasGameReference<Jogo> {
@@ -14,7 +15,7 @@ class ExplosionEffect extends SpriteAnimationComponent
   Future<void> onLoad() async {
     await super.onLoad();
     animation = await game.loadSpriteAnimation(
-      'explosion.png',
+      Assets.explosion,
       SpriteAnimationData.sequenced(
         stepTime: 0.1,
         amount: 6,

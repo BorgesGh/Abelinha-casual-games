@@ -1,6 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:primeiro_jogo/game/jogo.dart';
+import 'package:primeiro_jogo/utils/assets.dart';
 
 //Note que o Polen está herndando de SpriteAnimation
 
@@ -20,7 +21,7 @@ class Polen extends SpriteAnimationComponent with HasGameRef<Jogo> {
 
     //Aqui é a animação do polen saindo da abelha.
     animation = await game.loadSpriteAnimation(
-        "polen.png",
+        Assets.polen,
         SpriteAnimationData.sequenced(
             // É possível gerar uma animação por meio de uma foto, apenas dizendo quantos frames são correspondentes
             amount: 4,

@@ -4,6 +4,7 @@ import 'package:flame/components.dart';
 import 'package:flame/parallax.dart';
 import 'package:flutter/material.dart';
 import 'package:primeiro_jogo/game/jogo.dart';
+import 'package:primeiro_jogo/utils/assets.dart';
 
 class BackgroundParallax extends ParallaxComponent<Jogo> with HasGameRef<Jogo> {
   BackgroundParallax()
@@ -13,7 +14,7 @@ class BackgroundParallax extends ParallaxComponent<Jogo> with HasGameRef<Jogo> {
   FutureOr<void> onLoad() async {
     parallax = await gameRef.loadParallax(
       [
-        ParallaxImageData('bg.png'),
+        ParallaxImageData(Assets.background),
       ],
       repeat: ImageRepeat.repeat,
       baseVelocity: Vector2(50, 0),
