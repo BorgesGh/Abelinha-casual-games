@@ -4,5 +4,4 @@
 
 <p>Acompanhe mais capítulos do Livro para compreender a explicação do código.</p>
 
-<img src="imagens/foto.png">
 
