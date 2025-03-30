@@ -11,6 +11,7 @@ import 'screens/pages/loading_page.dart';
 void main() {
   WidgetsFlutterBinding
       .ensureInitialized(); // Garante que o Flutter esteja inicializado antes de executar o código
+
   FlameAudio.audioCache.loadAll([
     Assets.musicPlay,
     Assets.musicDefeat,
@@ -52,7 +53,7 @@ class _MyGameAppState extends State<MyGameApp> {
       home: isGameStarted
           ? GameWidget(
               game: jogo,
-              loadingBuilder: (context) => LoadingPage(),
+              loadingBuilder: (context) => const LoadingPage(),
               overlayBuilderMap: {
                 GameState.gameOver.name: (context, game) => GameOverOverlay(
                       game: jogo,

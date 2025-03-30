@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:primeiro_jogo/game/componentes/Player.dart';
+import 'package:primeiro_jogo/game/componentes/enemy.dart';
 import 'package:primeiro_jogo/game/componentes/world/meu_mundo.dart';
 import 'package:primeiro_jogo/utils/assets.dart';
 
