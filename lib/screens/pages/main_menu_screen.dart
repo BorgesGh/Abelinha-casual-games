@@ -24,6 +24,7 @@ class MainMenuPage extends StatelessWidget {
             ElevatedButton(
               onPressed: onStartGame,
               style: ElevatedButton.styleFrom(
+                shape: const LinearBorder(),
                 backgroundColor: Colors.blue,
                 foregroundColor: Colors.white,
                 padding:

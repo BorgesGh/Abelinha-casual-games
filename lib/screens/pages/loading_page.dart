@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoadingPage extends StatelessWidget {
-  LoadingPage({super.key});
+  const LoadingPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -37,10 +37,23 @@ class GameOverOverlay extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             ElevatedButton(
-                onPressed: () {
-                  game.restart();
-                },
-                child: const Text("Restart!"))
+              onPressed: () {
+                game.restart(); // Reinicia o jogo
+              },
+              style: ElevatedButton.styleFrom(
+                shape: const LinearBorder(),
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              ),
+              child: const Text(
+                'Reiniciar',
+                style: TextStyle(
+                  fontSize: 24,
+                ),
+              ),
+            ),
           ],
         ),
       ),
