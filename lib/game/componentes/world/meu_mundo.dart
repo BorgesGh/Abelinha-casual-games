@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flame/components.dart';
 import 'package:flame/experimental.dart';
@@ -16,8 +17,7 @@ class MeuMundo extends World with HasGameRef<Jogo>, HasCollisionDetection {
 
   @override
   Future<void> onLoad() async {
-    debugMode = true;
-
+    super.onLoad();
     width = gameRef.size.x;
     height = gameRef.size.y;
 
@@ -72,6 +72,7 @@ class MeuMundo extends World with HasGameRef<Jogo>, HasCollisionDetection {
 
   void stopSpawnInimigos() {
     _spawnEnemies.timer.stop();
+    removeWhere((enemy) => enemy is Enemy); // Remove todos os inimigos do mundo
   }
 
   void reset() async {
