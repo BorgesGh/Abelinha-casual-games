@@ -33,12 +33,6 @@ class Jogo extends FlameGame<MeuMundo> with PanDetector {
     await Future.delayed(const Duration(seconds: 1));
   }
 
-  @override
-  void onGameResize(Vector2 size) {
-    size = size;
-    super.onGameResize(size);
-  }
-
   void gameOver() {
     state = GameState.gameOver;
 
