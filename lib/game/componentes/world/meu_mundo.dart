@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:math';
-
 import 'package:flame/components.dart';
 import 'package:flame/experimental.dart';
 import 'package:primeiro_jogo/game/componentes/Enemy.dart';

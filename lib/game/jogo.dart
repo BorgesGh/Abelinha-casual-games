@@ -1,11 +1,9 @@
 import 'package:flame/events.dart';
-import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:primeiro_jogo/game/componentes/Player.dart';
-import 'package:primeiro_jogo/game/componentes/enemy.dart';
 import 'package:primeiro_jogo/game/componentes/world/meu_mundo.dart';
 import 'package:primeiro_jogo/utils/assets.dart';
 
@@ -33,12 +31,6 @@ class Jogo extends FlameGame<MeuMundo> with PanDetector {
 
     FlameAudio.bgm.play(Assets.musicPlay); // Tocar música de introdução
     await Future.delayed(const Duration(seconds: 1));
-  }
-
-  @override
-  void onGameResize(Vector2 size) {
-    size = size;
-    super.onGameResize(size);
   }
 
   void gameOver() {
