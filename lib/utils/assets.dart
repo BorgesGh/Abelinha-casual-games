@@ -7,6 +7,6 @@ class Assets {
 
   // Musicas
 
-  static const musicPlay = "play.mp3";
-  static const musicDefeat = "defeat.mp3";
+  static const musicPlay = "Play.wav";
+  static const musicDefeat = "Defeat.wav";
 }
