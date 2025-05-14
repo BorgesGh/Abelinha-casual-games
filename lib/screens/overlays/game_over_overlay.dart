@@ -18,7 +18,7 @@ class GameOverOverlay extends StatelessWidget {
       alignment: const Alignment(0, -0.15),
       child: Container(
         width: 400,
-        height: 500,
+        height: 300,
         alignment: Alignment.center,
         decoration: const BoxDecoration(
             color: Colors.yellow,
@@ -36,6 +36,7 @@ class GameOverOverlay extends StatelessWidget {
               subtitle,
               style: Theme.of(context).textTheme.headlineSmall,
             ),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 game.restart(); // Reinicia o jogo

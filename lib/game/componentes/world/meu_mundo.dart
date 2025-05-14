@@ -40,7 +40,7 @@ class MeuMundo extends World with HasGameRef<Jogo>, HasCollisionDetection {
       },
       period: 1,
       area: Rectangle.fromLTWH(
-          (width / 2) + 50, -(height / 2), 20, height - height / 4),
+          (width / 2) + 50, -((height / 2) - 20), 20, height - height / 4),
       autoStart: false,
     );
 
