@@ -57,6 +57,17 @@ class Player extends SpriteComponent with HasGameRef<Jogo> {
   }
 
   void move(Vector2 pos) {
+    // Restringe o movimento do jogador dentro dos limites da tela
+    if (position.x > gameRef.size.x / 2) {
+      position.x = gameRef.size.x / 2;
+    } else if (position.x < -(gameRef.size.x / 2)) {
+      position.x = -(gameRef.size.x / 2);
+    } else if (position.y > gameRef.size.y / 2) {
+      position.y = gameRef.size.y / 2;
+    } else if (position.y < -(gameRef.size.y / 2)) {
+      position.y = -(gameRef.size.y / 2);
+    }
+
     position.add(pos);
   }
 
